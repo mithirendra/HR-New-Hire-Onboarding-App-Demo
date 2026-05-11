@@ -325,12 +325,8 @@ if view == "New Hire":
     st.markdown("---")
 
     # ── Check-In ──
-    # Shows the relevant check-in based on days employed.
-    # Simple version — no submission tracking.
-
     st.markdown("### How Are You Settling In?")
 
-    # Determine which check-in to show based on days employed
     if days_employed >= 60:
         checkin_day = 90
         checkin_label = "90-Day Check-In"
@@ -341,6 +337,10 @@ if view == "New Hire":
         checkin_day = 30
         checkin_label = "30-Day Check-In"
     else:
+        checkin_day = None
+
+    if checkin_day is None:
+        # Too early — show message but do NOT call st.stop()
         st.markdown(
             """
             <div style="
@@ -357,34 +357,31 @@ if view == "New Hire":
             """,
             unsafe_allow_html=True,
         )
-        st.stop()
+    else:
+        st.markdown(f"#### {checkin_label}")
+        st.markdown("Your response goes to your manager and HR. Be honest — this helps us support you better.")
+        st.markdown("")
 
-    st.markdown(f"#### {checkin_label}")
-    st.markdown("Your response goes to your manager and HR. Be honest — this helps us support you better.")
-    st.markdown("")
+        sentiment_choice = st.radio(
+            "How are you feeling?",
+            ["😕 Struggling", "🙂 Getting there", "😊 Good", "🚀 Thriving"],
+            horizontal=True,
+        )
 
-    sentiment_choice = st.radio(
-        "How are you feeling?",
-        ["😕 Struggling", "🙂 Getting there", "😊 Good", "🚀 Thriving"],
-        horizontal=True,
-    )
+        comment = st.text_area(
+            "Any comments for your manager or HR?",
+            placeholder="What is going well? What could be better? Any support you need?",
+            height=100,
+        )
 
-    comment = st.text_area(
-        "Any comments for your manager or HR?",
-        placeholder="What is going well? What could be better? Any support you need?",
-        height=100,
-    )
-
-    if st.button("Submit Check-In", use_container_width=False):
-        if comment.strip() == "":
-            st.warning("Please add a comment before submitting.")
-        else:
-            st.success(
-                f"Thank you for your {checkin_label}. Your manager and HR have been notified. 🙂"
-            )
-            st.balloons()
-
-    st.markdown("---")
+        if st.button("Submit Check-In", use_container_width=False):
+            if comment.strip() == "":
+                st.warning("Please add a comment before submitting.")
+            else:
+                st.success(
+                    f"Thank you for your {checkin_label}. Your manager and HR have been notified. 🙂"
+                )
+                st.balloons()
 
 # ─────────────────────────────────────────────
 # MANAGER VIEW — Placeholder
@@ -436,3 +433,14 @@ elif view == "HR":
         """,
         unsafe_allow_html=True,
     )
+
+# Show footer
+st.markdown("""
+<div style='text-align:center; padding:20px 0 10px;
+            font-size:11px; color:#c0a080;
+            border-top:0.5px solid #f0d0b8;
+            margin-top:40px;'>
+    © 2026 Mitma Consulting · Mitma Onboarding App Version 0·
+    Built by Mithirendra Maniam
+</div>
+""", unsafe_allow_html=True)
