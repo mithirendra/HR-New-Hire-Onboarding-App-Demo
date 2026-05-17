@@ -4,7 +4,7 @@ import base64
 from datetime import datetime
 
 st.set_page_config(
-    page_title="Mitma Onboarding App | Mitma Consulting",
+    page_title="Mitma Onboarding App - Demo Version | Mitma Consulting",
     page_icon="assets/mitma_favicon.png",
     layout="wide",
     initial_sidebar_state="expanded",
