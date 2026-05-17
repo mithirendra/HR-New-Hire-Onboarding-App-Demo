@@ -297,7 +297,7 @@ with st.sidebar:
         st.markdown("### MANAGER VIEW")
 
     elif view == "🏢  HR":
-        st.markdown("### 🏢 HR View")
+        st.markdown("### 🏢 HR VIEW")
 
     st.markdown("---")
 
@@ -338,7 +338,7 @@ with st.sidebar:
 
 if view == "👤  New Hire":
 
-    st.markdown("## New Hire View - Onboarding Journey")
+    st.markdown("### NEW HIRE VIEW - Onboarding Journey")
 
     # New hire selector only shows in New Hire view
     selected_name = st.selectbox(
@@ -985,7 +985,7 @@ if view == "👤  New Hire":
 
 elif view == "👔  Manager":
     
-    st.markdown("## Manager View - Overall Team Progress")
+    st.markdown("### MANAGER VIEW - Overall Team Progress")
     st.markdown(
         """
         <div style="
@@ -1202,7 +1202,7 @@ elif view == "👔  Manager":
 # ─────────────────────────────────────────────
 elif view == "🏢  HR":
 
-    st.markdown("## HR View - Overall Company Onboarding")
+    st.markdown("### HR VIEW - Overall Company Onboarding")
 
     st.markdown(
         """
