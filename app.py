@@ -7,7 +7,7 @@ st.set_page_config(
     page_title="Mitma Onboarding App",
     page_icon="assets/mitma_favicon.png",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 # ─────────────────────────────────────────────
