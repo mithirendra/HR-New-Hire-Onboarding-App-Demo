@@ -5,7 +5,7 @@ A digital onboarding platform that guides new hires through their first 90 days.
 ## What It Does
 
 A structured onboarding experience for three audiences:
-- **New Hire** — Journey map, task tracker, meet the team, key contacts and check-ins - Full Version View
+- **New Hire** — Journey map, task tracker, meet the team, and check-ins - Partial View
 - **Manager** — Partial View
 - **HR** — Partial View
 
